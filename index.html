@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ambara Parfums | Online Store</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+:root{--bg:#FBF8F3;--card:#fff;--ink:#2B1B22;--mute:#76636B;--wine:#7A1F3D;--gold:#B08A3E;--line:#E9DFD3;--blush:#F1E6DA;
+--serif:"Bodoni Moda",Didot,Georgia,serif;--sans:"Jost",system-ui,sans-serif;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+button,input,select,textarea{font:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
+.bar{background:var(--wine);color:#F6E7D2;text-align:center;font-size:13px;padding:8px 12px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(251,248,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:24px;padding:14px 5vw}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;letter-spacing:.28em;color:var(--wine)}
+nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+nav a{padding:6px 12px;font-size:15px;border-radius:20px;cursor:pointer}
+nav a:hover,nav a.on{background:var(--blush);color:var(--wine)}
+.cartbtn{border:1px solid var(--wine);background:none;color:var(--wine);padding:8px 16px;border-radius:24px;cursor:pointer;white-space:nowrap}
+.cartbtn:hover{background:var(--wine);color:#fff}
+@media(max-width:860px){header{flex-wrap:wrap;gap:10px}nav{order:3;width:100%;margin:0;overflow-x:auto;flex-wrap:nowrap}.cartbtn{margin-left:auto}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:4vw;align-items:center;padding:7vh 5vw;background:linear-gradient(120deg,var(--blush),var(--bg))}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5.4vw,70px);line-height:1.08}
+.hero p{max-width:46ch;margin:20px 0 28px;color:var(--mute);font-size:18px}
+.hero img{width:100%;max-height:460px;object-fit:cover;border-radius:200px 200px 16px 16px;background:var(--blush)}
+.btn{display:inline-block;background:var(--wine);color:#fff;border:0;padding:14px 30px;border-radius:4px;cursor:pointer;letter-spacing:.06em}
+.btn:hover{background:#5E1830}
+.btn.line{background:none;color:var(--wine);border:1px solid var(--wine)}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero img{max-height:300px}}
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;padding:22px 5vw;border-bottom:1px solid var(--line);font-size:14px;color:var(--mute);text-align:center}
+.trust b{display:block;color:var(--ink);font-weight:500}
+section.shop{padding:7vh 5vw}
+.head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.head h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,44px)}
+.head select{padding:9px 12px;border:1px solid var(--line);background:#fff;border-radius:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.p img{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--blush)}
+.p div{padding:16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.p h3{font-family:var(--serif);font-weight:400;font-size:21px}
+.p small{color:var(--mute)}
+.p .row{margin-top:auto;padding:12px 0 0;flex-direction:row;align-items:center;justify-content:space-between}
+.p .row button{padding:9px 16px;font-size:14px}
+.tag{font-size:12px;color:var(--gold);font-weight:500}
+.about,.contact{padding:7vh 5vw;border-top:1px solid var(--line)}
+.about{background:var(--blush)}
+.about p,.contact p{max-width:60ch;color:var(--mute)}
+.about h2,.contact h2{font-family:var(--serif);font-weight:400;font-size:34px;margin-bottom:10px}
+footer{padding:26px 5vw;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+.ov{position:fixed;inset:0;background:rgba(43,27,34,.4);display:none;z-index:20}
+.ov.open{display:block}
+.drawer{position:absolute;right:0;top:0;bottom:0;width:min(430px,100%);background:var(--bg);padding:22px;overflow-y:auto;display:flex;flex-direction:column;gap:14px}
+.drawer h2{font-family:var(--serif);font-weight:400}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
+.item img{width:56px;height:70px;object-fit:cover;border-radius:4px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:4px}
+.qty button{width:26px;height:26px;border:1px solid var(--line);background:#fff;border-radius:50%;cursor:pointer}
+.tot{display:flex;justify-content:space-between;font-size:18px;font-weight:500}
+form{display:grid;gap:10px}
+input,textarea{padding:11px;border:1px solid var(--line);border-radius:4px;background:#fff;width:100%}
+.msg{padding:12px;border-radius:4px;font-size:14px;background:var(--blush)}
+.msg.err{background:#F8DDDD;color:#7A1F1F}
+.x{align-self:flex-end;background:none;border:0;font-size:26px;cursor:pointer;line-height:1}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#B08A3E" stroke-width="1.4"/><path d="M20 7 L9 31 h5 l2.4-5.6 h7.2 L26 31 h5z M18 22 h4 l-2-4.8z" fill="#7A1F3D"/><circle cx="20" cy="35" r="1.8" fill="#B08A3E"/></symbol></svg>
+<div class="bar">Free delivery across Pakistan on orders above Rs. 10,000 · Cash on delivery available</div>
+<header>
+<a class="logo" href="#top"><svg width="34" height="34"><use href="#mark"/></svg>AMBARA</a>
+<nav id="menu">
+<a data-cat="All" class="on">Home</a><a data-cat="Women">Women</a><a data-cat="Men">Men</a><a data-cat="Unisex">Unisex</a><a data-cat="Gift Sets">Gift Sets</a><a href="#about">About</a><a href="#contact">Contact</a>
+</nav>
+<button class="cartbtn" id="openCart">Cart (<span id="cnt">0</span>)</button>
+</header>
+
+<main id="top">
+<section class="hero">
+<div>
+<h1>Perfumes that last from morning to midnight</h1>
+<p>Rose, amber and oud blended in small batches. Order online and pay on delivery anywhere in Pakistan.</p>
+<a class="btn" href="#shop">Shop now</a> <a class="btn line" href="#about">Our story</a>
+</div>
+<img src="images/placeholder.svg" alt="Ambara perfume (replace with your photo)">
+</section>
+<div class="trust"><span><b>100% original oils</b>Aged 30 days</span><span><b>Cash on delivery</b>Pay when it arrives</span><span><b>3 to 5 day delivery</b>All major cities</span><span><b>7 day exchange</b>Sealed bottles only</span></div>
+
+<section class="shop" id="shop">
+<div class="head"><h2 id="title">All perfumes</h2>
+<select id="sort" aria-label="Sort"><option value="">Sort: Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div>
+<div class="grid" id="grid"></div>
+</section>
+
+<section class="about" id="about"><h2>About Ambara</h2><p>Ambara means amber and sky. We make extrait-strength perfumes with real oils, age every blend for 30 days and fill each bottle by hand, so the scent stays on your skin all day.</p></section>
+<section class="contact" id="contact"><h2>Contact</h2><p>WhatsApp: 03XX-XXXXXXX · Email: hello@ambara.example · Lahore, Pakistan</p></section>
+</main>
+<footer>© 2026 Ambara Parfums. All rights reserved.</footer>
+
+<div class="ov" id="ov"><aside class="drawer" role="dialog" aria-label="Cart">
+<button class="x" id="closeCart" aria-label="Close cart">×</button>
+<h2>Your cart</h2>
+<div id="items"></div>
+<div class="tot"><span>Total</span><span id="total">Rs. 0</span></div>
+<form id="f">
+<input name="name" placeholder="Full name" required>
+<input name="phone" placeholder="Phone (03XX-XXXXXXX)" required>
+<input name="city" placeholder="City" required>
+<textarea name="address" rows="2" placeholder="Full delivery address" required></textarea>
+<button class="btn" id="place">Place order (cash on delivery)</button>
+</form>
+<div id="msg"></div>
+</aside></div>
+
+<script>
+// Demo data, used only if the backend API is not running (e.g. this preview).
+var DEMO=[["Gulab Noir","Women","Damask rose, black pepper, oud",12500],["Jasmine Veil","Women","Jasmine, pear, white musk",10900],["Amber Hour","Unisex","Amber, saffron, vanilla",11900],["Saffron Silk","Unisex","Saffron, iris, cedar",11200],["Midnight Oud","Men","Oud, leather, sandalwood",14200],["Cedar & Smoke","Men","Cedar, tobacco, vetiver",12900],["Discovery Set","Gift Sets","5 ml x 3 signatures",4500],["Couple Gift Box","Gift Sets","One for him, one for her",21500]]
+.map(function(r,i){return{id:i+1,name:r[0],category:r[1],notes:r[2],price:r[3],stock:20,image:"images/placeholder.svg"}});
+
+var products=[],cart=[],cat="All",live=false;
+var $=function(id){return document.getElementById(id)};
+var money=function(n){return "Rs. "+Number(n).toLocaleString("en-PK")};
+var esc=function(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML};
+try{cart=JSON.parse(localStorage.getItem("ambara-cart")||"[]")}catch(e){cart=[]}
+function save(){try{localStorage.setItem("ambara-cart",JSON.stringify(cart))}catch(e){}}
+
+function show(){
+  var list=products.filter(function(p){return cat==="All"||p.category===cat});
+  var s=$("sort").value;
+  if(s==="lo")list.sort(function(a,b){return a.price-b.price});
+  if(s==="hi")list.sort(function(a,b){return b.price-a.price});
+  $("title").textContent=cat==="All"?"All perfumes":cat;
+  $("grid").innerHTML=list.map(function(p){
+    return '<article class="p"><img src="'+esc(p.image)+'" alt="'+esc(p.name)+'" loading="lazy"><div><span class="tag">'+esc(p.category)+'</span><h3>'+esc(p.name)+'</h3><small>'+esc(p.notes)+'</small><div class="row"><b>'+money(p.price)+'</b>'+
+    (p.stock>0?'<button class="btn" data-add="'+p.id+'">Add to cart</button>':'<small>Sold out</small>')+'</div></div></article>'}).join("")||"<p>No products here yet.</p>";
+}
+function drawCart(){
+  var total=0,n=0;
+  $("items").innerHTML=cart.map(function(c){
+    var p=products.find(function(x){return x.id===c.id});if(!p)return"";
+    total+=p.price*c.qty;n+=c.qty;
+    return '<div class="item"><img src="'+esc(p.image)+'" alt=""><div><b>'+esc(p.name)+'</b><div class="qty"><button data-dec="'+p.id+'" aria-label="Less">−</button>'+c.qty+'<button data-add="'+p.id+'" aria-label="More">+</button></div></div><span>'+money(p.price*c.qty)+'</span></div>'}).join("")||"<p>Your cart is empty.</p>";
+  $("total").textContent=money(total);$("cnt").textContent=n;
+  $("f").style.display=n?"grid":"none";
+}
+function add(id){var c=cart.find(function(x){return x.id===id});c?c.qty++:cart.push({id:id,qty:1});save();drawCart();$("ov").classList.add("open")}
+function dec(id){var c=cart.find(function(x){return x.id===id});if(!c)return;c.qty--;if(c.qty<1)cart=cart.filter(function(x){return x!==c});save();drawCart()}
+function note(t,err){$("msg").innerHTML='<div class="msg'+(err?" err":"")+'">'+esc(t)+'</div>'}
+
+document.addEventListener("click",function(e){
+  var t=e.target;
+  if(t.dataset.add)add(+t.dataset.add);
+  if(t.dataset.dec)dec(+t.dataset.dec);
+  if(t.dataset.cat){cat=t.dataset.cat;document.querySelectorAll("#menu a").forEach(function(a){a.classList.toggle("on",a===t)});show();$("shop").scrollIntoView()}
+});
+$("sort").onchange=show;
+$("openCart").onclick=function(){$("ov").classList.add("open")};
+$("closeCart").onclick=function(){$("ov").classList.remove("open")};
+$("ov").onclick=function(e){if(e.target===$("ov"))$("ov").classList.remove("open")};
+$("f").onsubmit=function(e){
+  e.preventDefault();$("msg").innerHTML="";
+  if(!live){cart=[];save();drawCart();$("f").reset();return note("Demo mode: the backend is not connected, so this order was not saved.")}
+  var fd=new FormData($("f")),customer={};fd.forEach(function(v,k){customer[k]=v});
+  $("place").disabled=true;
+  fetch("/api/orders",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({customer:customer,items:cart})})
+  .then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||"Order failed");return d})})
+  .then(function(d){cart=[];save();$("f").reset();load();note("Order #"+d.id+" placed. Total "+money(d.total)+". We will call you to confirm.")})
+  .catch(function(err){note(err.message,true)})
+  .then(function(){$("place").disabled=false});
+};
+function load(){
+  fetch("/api/products").then(function(r){return r.ok?r.json():Promise.reject()}).then(function(d){products=d;live=true})
+  .catch(function(){products=DEMO;live=false}).then(function(){show();drawCart()});
+}
+load();
+</script>
+</body>
+</html>
